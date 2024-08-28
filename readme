@@ -1,0 +1,17 @@
+CREATE DATABASE digger CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+
+CREATE USER 'digger'@'%' IDENTIFIED BY '123456asc';
+GRANT ALL PRIVILEGES ON *.* TO 'digger'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+
+mysql -u digger -h 192.168.36.68 -p123456asc
+
+
+mysql修改本地配置文件
+
+修改配置文件/etc/mysql/mysql.conf.d/mysqld.cnf,可以发现其默认只监听本地
+注释掉bind-address 和 mysqlx-bind-address，然后重启 service mysql restart
